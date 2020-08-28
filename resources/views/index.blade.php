@@ -1,6 +1,7 @@
 @extends('layout.app', ["current" => "home"])
 
 @section('body')
+    <br/>
     <div class="jumbotron bg-light border border-secondary">
         <div class="card-deck">
             <div class="card border border-primary">

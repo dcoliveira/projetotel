@@ -23,17 +23,12 @@ class ControladorPessoas extends Controller
     } 
     public function index()
     {
-        if(Auth::check()){
-
-            if('/')  
+        
+        if('/')  
             return view('/index');
-            elseif('/pessoas')
+        elseif('/pessoas')
             return view('/pessoas/lista');
 
-        }
-        else{
-            echo "<h4>Você não está logado</h4>";
-        }
 
     }
 
@@ -55,30 +50,18 @@ class ControladorPessoas extends Controller
      */
     public function store(Request $request)
     {
-        
-        if(Auth::check()){
 
-            $user = Auth::user();
-                
-            $pessoa = new Pessoas();
-            $pessoa->nome = $request->input('nomePessoa');
-            $pessoa->cpf = $request->input('cpfPessoa');
-            $pessoa->rg = $request->input('rgPessoa');
-            $pessoa->data_nascimento = $request->input('dataNascimento');
-            $pessoa->telefone = $request->input('telPessoa');
-            $pessoa->uf_nascimento = $request->input('ufNascimento');
-            $pessoa->id_usuariocadastrou = $user->id;
-            $pessoa->id_usuariomodificou = $user->id;
-            $pessoa->save(); 
-
-            return redirect('/pessoas/lista'); 
-
-        }
-        else{
-            echo "<h4>Você não está logado</h4>";
-        }
-
-        
+        $pessoa = new Pessoas();
+        $pessoa->nome = $request->input('nomePessoa');
+        $pessoa->cpf = $request->input('cpfPessoa');
+        $pessoa->rg = $request->input('rgPessoa');
+        $pessoa->data_nascimento = $request->input('dataNascimento');
+        $pessoa->telefone = $request->input('telPessoa');
+        $pessoa->uf_nascimento = $request->input('ufNascimento');
+        $pessoa->id_usuariocadastrou = Auth::user()->id;
+        $pessoa->id_usuariomodificou = Auth::user()->id;
+        $pessoa->save(); 
+        return redirect('/pessoas/lista'); 
     }
 
     /**
@@ -119,31 +102,18 @@ class ControladorPessoas extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::check()){
-
-            $user = Auth::user();
-
-            $pessoas = Pessoas::find($id);
-
-            if(isset($pessoas)){
-
-                $pessoas->nome = $request->input('nomePessoa');
-                $pessoas->cpf = $request->input('cpfPessoa');
-                $pessoas->rg = $request->input('rgPessoa');
-                $pessoas->data_nascimento = $request->input('dataNascimento');
-                $pessoas->telefone = $request->input('telPessoa');
-                $pessoas->uf_nascimento = $request->input('ufNascimento');
-                $pessoas->id_usuariomodificou = $user->id;
-
-                $pessoas->save(); 
-
-                return redirect('/pessoas/lista');
-            }
-   
-        }
-        else{
-            echo "<h4>Você não está logado</h4>";
-        }
+        $pessoas = Pessoas::find($id);
+        if ($pessoas) {
+            $pessoas->nome = $request->input('nomePessoa');
+            $pessoas->cpf = $request->input('cpfPessoa');
+            $pessoas->rg = $request->input('rgPessoa');
+            $pessoas->data_nascimento = $request->input('dataNascimento');
+            $pessoas->telefone = $request->input('telPessoa');
+            $pessoas->uf_nascimento = $request->input('ufNascimento');
+            $pessoas->id_usuariomodificou = Auth::user()->id;
+            $pessoas->save(); 
+            return redirect('/pessoas/lista');
+        } 
     }
 
     /**

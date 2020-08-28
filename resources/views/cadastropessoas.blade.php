@@ -1,6 +1,7 @@
 @extends('layout.app', ["current" => "pessoas"])
 
 @section('body')
+    <br/>
     <div class="row">
         <div class="container col-md-8 offset-md-2">
             <div class="card border">
@@ -10,7 +11,7 @@
                     </div> 
                 </div>   
                 <div class="card-body">
-                    <form name='form1' action="/pessoas" method="POST">
+                    <form name='form1' action="/pessoas/store" method="POST">
                         @csrf
                         <div class="form-group">
                            <!--  <label for="nomePessoa"> Nome </label> -->

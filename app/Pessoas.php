@@ -3,15 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pessoas extends Model
 {
-    //
-}
-
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Flight extends Model
-{
     use SoftDeletes;
+    protected $fillable = [
+
+    ];
 }

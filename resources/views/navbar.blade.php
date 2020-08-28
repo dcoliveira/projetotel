@@ -15,6 +15,9 @@
         <li @if($current=="login") class="nav-item active" @else class="nav-item" @endif>
             <a class="nav-link" href="/login">login <span class="sr-only">(current)</span></a>
         </li>
+        <li @if($current=="sair") class="nav-item active" @else class="nav-item" @endif>
+            <a class="nav-link" href="/sair">Sair <span class="sr-only">(current)</span></a>
+        </li>
       </ul>
     </div>
   </nav>
