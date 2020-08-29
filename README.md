@@ -8,4 +8,4 @@ Esta é um projeto para teste na Tel
 3. Criar o arquivo `.env` e configure os dados de sua base de dados;
 4. execute o comando `composer install`.
 5. Rode a aplicação com `php artisan serve`. O serviço responde em `http://localhost:8080/`
-6. Rode php artisan migrate        
+6. Rode migration para criar as tbelas         
